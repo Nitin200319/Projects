@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            background-color: rgb(21, 80, 80);
+        }
+        .container {
+            width: 360px;
+            padding: 33px;
+            text-align: center;
+            background-color: #fff;
+            margin-left: 33%;
+            margin-top: 5px;
+        }
+        input {
+            width: 270px;
+            padding: 8px;
+            border: 2px solid rgb(6, 145, 145);
+            outline: none;
+            font-size: 19px;
+        }
+        button {
+            width: 60px;
+            height: 41px;
+            background-color: rgb(4, 29, 29);
+            color: #fff;
+            border-radius: 2px;
+            border: none;
+            font-size: 19px;
+        }
+        .text ul {
+            position: relative;
+            background-color: rgb(5, 31, 31);
+            color: #fff;
+            font-size: 19px;
+            /* padding: 5px; */
+            text-align: left;
+        }
+        .text ul i {
+            position: absolute;
+            right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>todo app</h1>
+        <div class="inputs">
+            <input type="text" placeholder="Enter your task" id="inp">
+            <button onclick="Add()">Add</button>
+        </div>
+        <div class="text">
+            <ul id="task-list"></ul>
+        </div>
+    </div>
+    <script>
+        let inputs = document.getElementById("inp");
+        let text = document.getElementById("task-list");
+
+        function Add() {
+            if(inputs.value == "") {
+                alert("please enter task");
+            } else {
+                let newEle = document.createElement("li");
+                newEle.innerHTML = `${inputs.value} <i class="fa-solid fa-trash"></i>`;
+                text.appendChild(newEle);
+                inputs.value = "";
+                newEle.querySelector("i").addEventListener("click", remove);
+            }
+        }
+
+        function remove() {
+            this.parentElement.remove();
+        }
+    </script>
+</body>
+</html>
